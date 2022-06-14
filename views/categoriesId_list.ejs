@@ -1,0 +1,38 @@
+<h1 class="pb-4"><%= categoryId %></h1>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/categories">Categories</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= categoryId %></li>
+    </ol>
+</nav>
+
+<div class=" text-end">
+  <a href="/categories/<%= categoryId %>"><i class="bi bi-grid"></i></a>
+  <i class="text-info bi bi-justify"></i>
+</div>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+  <% if(typeof categoryById !== 'undefined' && categoryById.length > 0) { %>
+    <table class="table">
+      <thead>
+          <tr>
+              <th>제목</th>
+              <th>작성자</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% categoryById.forEach(function(game, index) {%>
+        
+              <tr>
+                  <td><a href="/game/<%= game._id %>"><%= game.name %></a></td>
+                  <td><%= game.email %></td>
+              </tr>
+          <% }) %>
+          <% } else { %>
+            <p>이 장르에 작성된 게임 게시물이 없습니다.</p>
+          <% } %>
+      </tbody>
+  </table>
+</div>

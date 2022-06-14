@@ -23,6 +23,7 @@ router.get('/', gameController.homepage);
 router.get('/game/:id', gameController.exploreGame );
 router.get('/categories', gameController.exploreCategories);
 router.get('/categories/:id', gameController.exploreCategoriesById);
+router.get('/categories/:id/list', gameController.exploreCategoriesByIdlist);
 router.post('/search', gameController.searchGame);
 router.get('/explore-latest', gameController.exploreLatest);
 router.get('/explore-random', gameController.exploreRandom);

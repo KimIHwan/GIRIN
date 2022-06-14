@@ -22,14 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     admin: {
         type: Boolean
-    },
-    token:{
-        type:String
-    },
-    tokenExp:{
-        type:Number
     }
-    
 });
 
 //비밀번호 암호화

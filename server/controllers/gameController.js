@@ -57,6 +57,18 @@ exports.exploreCategoriesById = async(req, res) => {
     }
 }
 
+exports.exploreCategoriesByIdlist = async(req, res) => {
+    try{
+        let categoryId = req.params.id; // Routes의 /categories/:id
+        const categoryById = await Game.find({ 'category': categoryId });
+        // console.log(categoryId)
+        // console.log(categoryById)
+        res.render('categoriesId_list', {title: 'GIRIN - Categories', categoryById, categoryId});
+    } catch (error) {
+        res.status(500).send({message: error.message || "Error Occured"});
+    }
+}
+
 
 /**
  * GET /game/:id
@@ -166,7 +178,6 @@ exports.submitGameOnPost = async(req, res) => {
         if(!req.files || Object.keys(req.files).length === 0){
             console.log('No Files where uploaded.');
         } else {
-
             imageUploadFile = req.files.image;
             newImageName = Date.now() + imageUploadFile.name;
 
@@ -175,7 +186,6 @@ exports.submitGameOnPost = async(req, res) => {
             imageUploadFile.mv(uploadPath, (err)=> {
                 if(err) return res.status(500).send(err);
             })
-
         }
         const author = req.user.id; // 현재 로그인 되어있는 계정의 _id
         const Cemail = req.user.email; //현재 로그인 되어있는 계정의 이메일

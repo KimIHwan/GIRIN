@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const url = "mongodb://localhost:27017/GameReview"
+const url = "mongodb://localhost:27017/Girin"
 mongoose.connect(url); // db연동
 
   const db = mongoose.connection;
