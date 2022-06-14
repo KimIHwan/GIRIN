@@ -1,0 +1,63 @@
+<% if(game != null ) { %>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/categories">Categories</a></li>
+          <li class="breadcrumb-item"><a href="/categories/<%- game.category %>"><%- game.category %></a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%- game.name %></li>
+        </ol>
+    </nav>
+
+    <div class="row">
+
+        <div class="col-12 col-md-4">
+            <img src="/uploads/<%- game.image %>" class="img-fluid sticky-top" style="top: 20px;" alt="<%- game.name %>" loading="lazy">
+        </div>
+
+        <div class="col-12 col-md-8">
+            <div class="row">
+                <div class="col-12"><h1><%- game.name %></h1></div>
+                <div class="col-12 mb-4"><i class="bi bi-tag"></i><%- game.category %></div>
+                <div class="col-12">작성자</div>
+                <div class="col-12 mb-4"><%- game.email %><hr></div>
+                
+                <div class="col-12"><h5>장점 : <%- game.pros %></h5><br></div>
+                <br>
+                <div class="col-12"><h5>단점 : <%- game.cons %></h5><hr></div>
+                
+                <div class="col-12" style="white-space: pre-line;">
+                    <h4>게임 설명</h4>
+                    <%- game.description %>
+                    <hr>
+                </div>
+                
+                <div class="col-12" style="white-space: pre-line;">
+                    <h4>소감</h4>
+                    <%- game.review %>
+                </div>
+            </div>
+            <hr>
+            <div class="row pt-4">
+                <div class="col-12">
+                    <h4>요소</h4>
+                    <ul class="list-group list-group-flush">
+                    <% game.elements.forEach((elements, index)=>{ %> 
+                        <li class="list-group-item"><%= elements %></li>
+                    <% }) %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <a href="<%= `${game._id}/edit` %>" class="btn btn-outline-secondary px-4 me-md-2" a>글 수정</a>
+    <a href="<%= `${game._id}/delete?_method=DELETE` %>" onclick="return confirm('정말로 삭제하시겠습니까?')" class="btn btn-outline-secondary px-4 me-md-2" a>글 삭제</a>
+
+<% } else { %>
+    <p>No item found.</p>
+<% } %>
+
+
+
+

@@ -1,0 +1,104 @@
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Submit Your Game</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead">당신이 알고 있는 최고의 게임을 소개해 주세요</p>
+    </div>
+</div>
+
+
+<div class="row justify-content-center">
+
+    <!-- 제출 시 알림창 -->
+    <% if(infoSubmitObj != '') { %>
+        <div class="col-8 alert alert-success" role="alert">
+            <%= infoSubmitObj %>
+        </div>
+    <% } %>
+
+    <!-- 제출 오류 시 알림창 -->
+    <% if(infoErrorsObj != '') { %>
+        <div class="col-8 alert alert-danger" role="alert">
+            <%= infoErrorsObj[0].message %>
+        </div>
+    <% } %>
+
+    <div class="col-8">
+        <form action="/submit-game" enctype="multipart/form-data" method="POST">
+
+            <div class="row g-3">
+
+                <div class="col-12">
+                    <label for="name" class="form-label">게임 이름</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="name" class="form-label">장점</label>
+                    <input type="text" name="pros" id="pros" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="name" class="form-label">단점</label>
+                    <input type="text" name="cons" id="cons" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="description" class="form-label">게임 설명</label>
+                    <textarea name="description" id="description" class="form-control" cols="30" rows="4"></textarea>
+                </div>
+
+                <div class="col-12">
+                    <label for="description" class="form-label">소감</label>
+                    <textarea name="review" id="review" class="form-control" cols="30" rows="4"></textarea>
+                </div>
+
+                <div class="col-12">
+                    <label for="name" class="form-label">게임 요소</label><br>
+                    <small>예시: 3D, 캐주얼</small>
+                    <div class="elementList">
+                        <div class="elementDiv mb-1">
+                            <input type="text" name="elements" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <button type="button" class="btn btn-outline-primary" id="addElementBtn">+ 요소 추가</button>
+                </div>
+
+
+                <div class="col-12">
+                    <label for="category">Select Category</label>
+                    <select class="form-select form-control" name="category" aria-label="Category">
+                        <option selected disabled>Select Category</option>
+                        <option value="Adventure">어드벤처</option>
+                        <option value="Rhythm">리듬</option>
+                        <option value="Sports">스포츠</option>
+                        <option value="Shooting">슈팅</option>
+                        <option value="Simulation">시뮬레이션</option>
+                        <option value="Action">액션</option>
+                        <option value="Puzzle">퍼즐</option>
+                        <option value="Board">보드(턴게임)</option>
+                        <option value="BattleRoyale">배틀로얄</option>
+                        <option value="Social">소셜</option>
+                        <option value="RPG">RPG</option>
+                        <option value="Platform">플랫폼</option>
+                        <option value="Sandbox">샌드박스</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label for="image">게임 이미지</label>
+                    <input type="file" class="form-control" name="image" accept="image/*">
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">게임 등록</button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

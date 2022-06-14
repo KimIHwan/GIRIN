@@ -1,0 +1,63 @@
+<script type="text/javascript">
+  function checkPasswordPattern(str) {
+
+      var pass = str.value;
+      var message = "";
+
+      // 비밀번호 문자열에 숫자 존재 여부 검사
+      var pattern1 = /[0-9]/;  // 숫자
+      if(pattern1.test(pass) == false) {
+          message = "비밀번호에 숫자가 입력되지 않았습니다.\n숫자를 입력하여 주시기 바랍니다.";
+      }
+
+      // 비밀번호 문자열에 영문 소문자 존재 여부 검사
+      var pattern2 = /[a-z]/;
+      if(pattern2.test(pass) == false) {
+          message = "비밀번호에 영문 소문자가 입력되지 않았습니다.\n영문 소문자를 입력하여 주시기 바랍니다.";
+      }
+
+      // 비밀번호 문자열의 입력 길이 검사
+      if(pass.length < 8 || pass.length > 16) {
+          message = "비밀번호는 8자리 이상 16자리 이하만 가능합니다.\n비밀번호를 다시 입력하여 주시기 바랍니다.";
+      }
+
+      // 비밀번호 문자열 결과 출력
+      if(message) {
+          alert(message);
+          str.value = "";
+          str.focus();
+          return false;
+      }
+  }
+</script>
+
+<div class="container">
+    <div class="col-md-4 mx-auto">
+      <div class="card card-body">
+        <h3 class="text-center">회원가입</h3>
+
+        <form action="/signup" method="post">
+          <div class="col-12">
+            <label for="name">이름</label>
+            <input type="text" class="form-control" name="name" minlength="2" required>
+          </div>
+          <div class="col-12">
+            <label for="email">이메일</label>
+            <input type="email" class="form-control" name="email" placeholder="example@exam.com" required>
+          </div>
+          <div class="col-12">
+            <label for="password">비밀번호</label>
+            <input type="password" class="form-control" name="password" placeholder="8자리 이상 16자리 이하의 숫자+영어 조합" required>
+          </div>
+          <div class="col-12">
+            <label for="phno">연락처</label>
+            <input type="text" class="form-control" id="phno" name="phno" pattern=".{10,11}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="- 빼고 입력" title="10~11자" required />  
+          </div>
+          <br>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary" onClick="checkPasswordPattern(password);">가입</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

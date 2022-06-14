@@ -1,0 +1,90 @@
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">글 수정</h1>
+
+</div>
+
+
+<div class="row justify-content-center">
+
+    <div class="col-8">
+        <form enctype="multipart/form-data" method="POST" action="<%=`/game/${game._id}/update?_method=PUT`%>">
+            <div class="row g-3">
+
+                <div class="col-12">
+                    <label for="name" class="form-label">게임 이름</label>
+                    <input type="text" name="name" id="name" class="form-control" value="<%= game.name %>" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="name" class="form-label">장점</label>
+                    <input type="text" name="pros" id="pros" class="form-control" value="<%= game.pros %>" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="name" class="form-label">단점</label>
+                    <input type="text" name="cons" id="cons" class="form-control" value="<%= game.cons %>"  required>
+                </div>
+
+                <div class="col-12">
+                    <label for="description" class="form-label">게임 설명</label>
+                    <textarea name="description" id="description" class="form-control" cols="30" rows="4"><%= game.description %></textarea>
+                </div>
+
+                <div class="col-12">
+                    <label for="description" class="form-label">소감</label>
+                    <textarea name="review" id="review" class="form-control" cols="30" rows="4"><%= game.review %></textarea>
+                </div>
+
+                <div class="col-12">
+                    <label for="name" class="form-label">게임 요소</label><br>
+                    <small>예시: 3D, 캐주얼</small>
+                    <div class="elementList">
+                        <% game.elements.forEach((elements, index)=> { %>
+                        <!-- element 수만큼 element생성 -->
+                        <div class="elementDiv mb-1">
+                                <input type="text" name="elements" class="form-control" value="<%= elements %>">
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <button type="button" class="btn btn-outline-primary" id="addElementBtn">+ 요소 추가</button>
+                </div>
+
+
+                <div class="col-12">
+                    <label for="category">Select Category</label>
+                    <select class="form-select from-control" name="category" aria-label="Category">
+                        <option selected disabled>Select Category</option>
+                        <option value="Adventure">어드벤처</option>
+                        <option value="Rhythm">리듬</option>
+                        <option value="Sports">스포츠</option>
+                        <option value="Shooting">슈팅</option>
+                        <option value="Simulation">시뮬레이션</option>
+                        <option value="Action">액션</option>
+                        <option value="Puzzle">퍼즐</option>
+                        <option value="Board">보드(턴게임)</option>
+                        <option value="BattleRoyale">배틀로얄</option>
+                        <option value="Social">소셜</option>
+                        <option value="RPG">RPG</option>
+                        <option value="Platform">플랫폼</option>
+                        <option value="Sandbox">샌드박스</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label for="image">게임 이미지</label>
+                    <input type="file" class="form-control" name="image" accept="image/*" >
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">수정 완료</button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

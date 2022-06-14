@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="col-md-4 mx-auto">
+      <div class="card card-body">
+        <h3 class="text-center">회원 정보 수정</h3>
+        <form enctype="multipart/form-data" method="POST" action="<%=`/mypage/update?_method=PUT`%>">
+          <div class="col-12">
+            <label for="name">이름</label>
+            <input type="text" class="form-control" name="name" minlength="2" value="<%= user[0].name %>" required>
+          </div>
+          <div class="col-12">
+            <label for="phno">연락처</label>
+            <input type="text" class="form-control" id="phno" name="phno" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" pattern=".{10,11}" title="10~11자" value="<%= user[0].phno %>" required />  
+          </div>
+          <br>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">수정 완료</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

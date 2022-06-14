@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="col-md-4 mx-auto">
+      <div class="card card-body">
+        <h3 class="text-center">로그인</h3>
+
+        <% if(fmsg.error) { %>
+          <div class="col-12 alert alert-danger" role="alert"><%= fmsg.error %></div>
+        <% } %>
+        <form action="/login" method="post">
+          <div class="col-12">
+            <label for="email">이메일</label>
+            <input type="email" class="form-control" name="email" required autofocus>
+          </div>
+          <div class="col-12">
+            <label for="password">비밀번호</label>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+          <br>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">로그인</button>
+          </div>
+        </form>
+      </div>
+      <br>
+      <h5>회원이 아니신가요? <a href="/signup">회원가입</a> </h5>
+    </div>
+</div>
