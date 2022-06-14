@@ -26,5 +26,8 @@ router.put('/mypage/update',isAuthenticated, userController.updateUser);
 router.delete('/mypage/delete',isAuthenticated, userController.deleteUser);
 router.delete('/mypage/:id/delete',isAuthenticated, userController.deleteMember);
 
+router.get('/mypage/:id/editUser',isAuthenticated, userController.editMember);
+router.put('/mypage/:id/update',isAuthenticated, userController.updateMember);
+
 
 module.exports = router;

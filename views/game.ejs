@@ -20,21 +20,21 @@
                 <div class="col-12"><h1><%- game.name %></h1></div>
                 <div class="col-12 mb-4"><i class="bi bi-tag"></i><%- game.category %></div>
                 <div class="col-12">작성자</div>
-                <div class="col-12 mb-4"><%- game.email %><hr></div>
+                <div class="col-12 mb-4"><i class="bi bi-envelope"></i> <%- game.email %><hr></div>
                 
                 <div class="col-12"><h5>장점 : <%- game.pros %></h5><br></div>
                 <br>
                 <div class="col-12"><h5>단점 : <%- game.cons %></h5><hr></div>
                 
                 <div class="col-12" style="white-space: pre-line;">
-                    <h4>게임 설명</h4>
-                    <%- game.description %>
+                    <h3>게임 설명</h3>
+                    <h5><%- game.description %><h5>
                     <hr>
                 </div>
                 
                 <div class="col-12" style="white-space: pre-line;">
-                    <h4>소감</h4>
-                    <%- game.review %>
+                    <h3>소감</h3>
+                    <h5><%- game.review %></h5>
                 </div>
             </div>
             <hr>
@@ -43,7 +43,7 @@
                     <h4>요소</h4>
                     <ul class="list-group list-group-flush">
                     <% game.elements.forEach((elements, index)=>{ %> 
-                        <li class="list-group-item"><%= elements %></li>
+                        <li class="list-group-item"><i class="bi bi-dot"></i>  <%= elements %></li>
                     <% }) %>
                     </ul>
                 </div>

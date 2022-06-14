@@ -2,7 +2,11 @@
     <div class="col-md-4 mx-auto">
       <div class="card card-body">
         <h3 class="text-center">회원 정보 수정</h3>
-        <form enctype="multipart/form-data" method="POST" action="<%=`/mypage/update?_method=PUT`%>">
+        <% if (admin == true) { %>
+          <form enctype="multipart/form-data" method="POST" action="<%=`/mypage/${user[0]._id}/update?_method=PUT`%>">
+        <% } else { %>
+          <form enctype="multipart/form-data" method="POST" action="<%=`/mypage/update?_method=PUT`%>">
+        <% } %>
           <div class="col-12">
             <label for="name">이름</label>
             <input type="text" class="form-control" name="name" minlength="2" value="<%= user[0].name %>" required>

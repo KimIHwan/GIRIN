@@ -86,8 +86,9 @@ exports.editUser = async(req, res) => {
         if(req.user){
             if(!req.user.admin){ // 어드민은 접근 불가
                 let userId = req.user._id; //로그인 중인 
+                let admin = req.user.admin; // 어드민 확인
                 let user = await User.find( {_id: userId} );
-                res.render('editUser', {title: 'GIRIN - 회원정보 수정', user });
+                res.render('editUser', {title: 'GIRIN - 회원정보 수정', user , admin});
             }
             else{
                 res.send("<script>alert('잘못된 접근입니다.');location.href='/';</script>");
@@ -159,5 +160,47 @@ exports.deleteMember = async(req, res) => {
         }
     } catch (error) {
         console.log(`Error deleting game by ID: ${error.message}`);
+    }
+}
+
+exports.editMember = async(req, res) => {
+    try {
+        if(req.user){
+            if(req.user.admin){ // 어드민만
+                const UserId = req.params.id;
+                let user = await User.find( {_id: UserId} );
+                let admin = await req.user.admin
+                console.log(admin)
+                console.log(UserId)
+                res.render('editUser', {title: 'GIRIN - 회원정보 수정', user , admin});
+            }
+            else{
+                res.send("<script>alert('잘못된 접근입니다.');location.href='/';</script>");
+            }
+        } else {
+            res.send("<script>alert('로그인 해주세요.');history.back();</script>");
+        }
+    } catch (error) {
+        console.log(`Error fetching game by ID: ${error.message}`);
+    }
+}
+
+exports.updateMember = async(req, res) => {
+    try {
+        const UserId = req.params.id;
+        const getUserParams = body => {
+            return {
+                name: body.name,
+                phno: body.phno
+            };
+        };
+        console.log(UserId);
+        const userParams = getUserParams(req.body);
+
+        await User.findByIdAndUpdate(UserId, {$set: userParams})
+        res.send("<script>alert('해당 회원의 회원 정보가 수정되었습니다.');location.href='/mypage';</script>");
+
+    } catch (error) {
+        console.log(`Error updating user by ID: ${error.message}`);
     }
 }
