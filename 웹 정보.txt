@@ -1,0 +1,5 @@
+cd \
+cd mongodb\bin
+mongod --dbpath C:\DEV-STU\Girin\database
+
+어드민 수정기능까지 완성

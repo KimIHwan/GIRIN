@@ -51,3 +51,17 @@ a { color: var(--bs-dark);}
 #sc2 {
     border-radius: 0px 10px 10px 0px;
 }
+
+
+.mainimage {
+    position:relative;
+}
+  
+.maintext {
+    position:absolute;
+    text-align: center;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+  

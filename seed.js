@@ -10,7 +10,7 @@ mongoose.connect("mongodb://localhost:27017/Girin"
 
 
 
-Category.deleteMany({}).then(() => {
+Category.deleteMany({}).then(() => { // 기본 카테고리 생성
     return Category.create({
         "name": "Adventure",
         "image": "adventure.jpg"
@@ -70,12 +70,12 @@ Category.deleteMany({}).then(() => {
         "name": "Platform",
         "image": "platform.jpg"
     });
-  }).then(Category => console.log(Category.name)).then(() => {
+  }).then(Category => console.log(Category.name)).then(() => { 
     return Category.create({
         "name": "Sandbox",
         "image": "sandbox.jpg"
     });
-  }).then(User => console.log(User.name)).then(() => {
+  }).then(User => console.log(User.name)).then(() => { // 어드민 계정 생성
     return User.create({
         "name": "어드민",
         "email": "admin@naver.com",
@@ -83,9 +83,7 @@ Category.deleteMany({}).then(() => {
         "phno": "01022222222",
         "admin": true
     });
-  })
-  
-  .then(Category => console.log(Category.name)).catch(error => console.log(error.message)).then(() => {
+  }).then(Category => console.log(Category.name)).catch(error => console.log(error.message)).then(() => {
     console.log("DONE");
     mongoose.connection.close();
   });
