@@ -3,24 +3,24 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const userSchema = new mongoose.Schema({
-    name: {
+    name: { // 이름
         type: String,
         required: true
     },
-    email: {
+    email: { // email
         type: String,
         required: true,
         unique: true
     },
-    password: {
+    password: { // 비밀번호
         type: String,
         required: true
     },
-    phno: {
+    phno: { // 핸드폰 번호
         type: String,
         required: true
     },
-    admin: {
+    admin: { // 어드민 여부
         type: Boolean
     }
 });
@@ -42,14 +42,4 @@ userSchema.pre('save', function(next) {
     }
 })
 
-
-//암호화 비교
-// userSchema.methods.comparePassword = function (plainPassword, callBack){
-//     bcrypt.compare(plainPassword, this.password, function(err,isMatch){
-//         if(err) return callBack(err)
-//         callBack(null, isMatch)
-//     })
-// }
-
-
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema); // 컬렉션이름은 소문자 복수형이므로 users로 생성됨

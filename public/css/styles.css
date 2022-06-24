@@ -12,7 +12,7 @@ body{
 
 a { color: var(--bs-dark);}
 
-/* Category Card */
+/* Category 설정 */
 .category__link {
     text-align: center;
     display: block;
@@ -41,9 +41,11 @@ a { color: var(--bs-dark);}
 
 .category__img img {
     width: 100%;
+    height:100%;
     object-fit: cover;
 }
 
+/* 검색 바 둥글게 */
 #sc1 {
     border-radius: 10px 0px 0px 10px;
 }
@@ -52,7 +54,7 @@ a { color: var(--bs-dark);}
     border-radius: 0px 10px 10px 0px;
 }
 
-
+/* 메인 페이지 사진 중간에 글자 들어가게 */
 .mainimage {
     position:relative;
 }

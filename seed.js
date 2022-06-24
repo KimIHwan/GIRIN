@@ -3,7 +3,6 @@
 const mongoose = require("mongoose");
 const Category = require("./server/models/Category");
 const User = require("./server/models/User");
-const bcrypt = require('bcrypt')
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/Girin"
 );

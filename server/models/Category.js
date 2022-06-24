@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const categorySchema = new mongoose.Schema({
-    name: {
+    name: { // 카테고리 이름들
         type: String,
         required: 'This field is required.'
     },
-    image: {
+    image: { // 카테고리 사진
         type: String,
         required: 'This field is required.'
     }

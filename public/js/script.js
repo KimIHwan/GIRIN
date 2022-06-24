@@ -8,3 +8,4 @@ addElementsBtn.addEventListener('click', () => {
     input.value = '';
     elementList.appendChild(newElements);
 })
+// 글 작성 및 수정에서 element 추가 버튼 기능
